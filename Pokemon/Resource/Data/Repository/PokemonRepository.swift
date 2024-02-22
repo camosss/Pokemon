@@ -23,14 +23,15 @@ extension PokemonRepository {
             switch result {
             case .success(let response):
                 do {
-                    let data = try response.map([PokemonCard].self)
-                    completion(.success(data))
+                    let apiResponse = try response.map(APIResponse.self)
+                    completion(.success(apiResponse.data))
 
                 } catch {
                     completion(.failure(error))
                 }
 
             case .failure(let error):
+                print("API 호출 에러: \(error)")
                 completion(.failure(error))
             }
         }
