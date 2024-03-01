@@ -24,12 +24,12 @@ extension PokemonRepository {
             case .success(let response):
                 do {
                     let apiResponse = try response.map(APIResponse.self)
+                    print("API 응답 성공: \(apiResponse)")
                     completion(.success(apiResponse.data))
-
                 } catch {
+                    print("API 응답 파싱 에러: \(error)")
                     completion(.failure(error))
                 }
-
             case .failure(let error):
                 print("API 호출 에러: \(error)")
                 completion(.failure(error))

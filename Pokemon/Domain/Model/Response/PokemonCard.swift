@@ -14,7 +14,7 @@ struct APIResponse: Codable {
 struct PokemonCard: Codable {
     let id: String
     let name: String
-    let hp: String
+    let hp: String?
     struct Images: Codable {
         let small: URL
         let large: URL
